@@ -1,0 +1,36 @@
+{
+  "post": [
+    {
+      "id": 1,
+      "nome": "Gui",
+      "sobrenome": "Zezza",
+      "email": "zezza@mail.com",
+      "telefone": "21998219110",
+      "salario": "3500"
+    },
+    {
+      "id": 2,
+      "nome": "Pedro",
+      "sobrenome": "Souza",
+      "email": "pd@mail.com",
+      "telefone": "21999989999",
+      "salario": "1800"
+    },
+    {
+      "id": 3,
+      "nome": "Gabriel",
+      "sobrenome": "Medeiros",
+      "email": "gb@mail.com",
+      "telefone": "21999999910",
+      "salario": "2000"
+    },
+    {
+      "id": 4,
+      "nome": "Davi",
+      "sobrenome": "Pinto",
+      "email": "dp@mail.com",
+      "telefone": "21999993999",
+      "salario": "3000"
+    }
+  ]
+}

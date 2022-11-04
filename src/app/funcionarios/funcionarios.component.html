@@ -1,0 +1,97 @@
+<nav class="navbar navbar light bg-dark">
+    <div class="container-fluid">
+        <h1 style="color: white;">Funcionários</h1>
+        <div class="d-flex">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                (click)="btnAdd()">Adicionar funcionário</button>
+        </div>
+    </div>
+</nav>
+
+<table class="table mt-2">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Sobrenome</th>
+            <th scope="col">Email</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">Salário</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let list of funcList">
+            <td>{{list.id}}</td>
+            <td>{{list.nome}}</td>
+            <td>{{list.sobrenome}}</td>
+            <td>{{list.email}}</td>
+            <td>{{list.telefone}}</td>
+            <td>{{list.salario | currency:"BRL"}}</td>
+            <td>
+                <button class="btn btn-warning mx-1" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    (click)="onEdit(list)">Editar</button>
+                <button class="btn btn-danger" type="button" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" (click)="btnExcluir(list)">Excluir</button>
+
+                <!-- Modal Excluir -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="width: 450px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-6" style="text-align: justify;" id="staticBackdropLabel">Deseja excluir {{modalExcObj.nome}} {{modalExcObj.sobrenome}} permanentemente?</h1>
+                            </div>
+                            <div class="modal-footer border-0">
+                                <button id="cancel2" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="btn btn-danger" (click)="deleteFunc(modalExcObj.id)">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal Formulário-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formValue">
+                    <div class="mb-3">
+                        <label for="exampleInput" class="form-label">Nome:</label>
+                        <input type="text" class="form-control" id="exampleInput" formControlName="nome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInput" class="form-label">Sobrenome:</label>
+                        <input type="" class="form-control" id="exampleInput" formControlName="sobrenome">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInput" class="form-label">Email:</label>
+                        <input type="" class="form-control" id="exampleInput" formControlName="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInput" class="form-label">Telefone:</label>
+                        <input type="" class="form-control" id="exampleInput" formControlName="telefone">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInput" class="form-label">Salário:</label>
+                        <input type="" class="form-control" id="exampleInput" formControlName="salario">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancel">Fechar</button>
+                <button type="button" class="btn btn-primary" (click)="postFunc()" *ngIf="salvarAdd">Salvar</button>
+                <button type="button" class="btn btn-primary" (click)="updateFunc()"
+                    *ngIf="salvarEdit">Atualizar</button>
+            </div>
+        </div>
+    </div>
+</div>
